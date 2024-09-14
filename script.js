@@ -1,0 +1,226 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const image = document.getElementById('exoplanet-image');
+    const distance = document.getElementById('distance');
+    const radius = document.getElementById('radius');
+    const orbitalSpeed = document.getElementById('orbital-speed');
+    const description = document.getElementById('description');
+    const button = document.getElementById('new-exoplanet-button');
+    
+    const exoplanets = [
+        {
+            name: "Proxima Centauri b",
+            distance: "4.24 light-years",
+            radius: "1.3 Earth Radii",
+            orbitalSpeed: "Unknown",
+            description: "Proxima Centauri b is one of the closest exoplanets to Earth. It might have conditions where liquid water could exist!",
+            image: "./imgs/Proxima.jpeg"
+        },
+        {
+            name: "Kepler-22b",
+            distance: "600 light-years",
+            radius: "2.4 Earth Radii",
+            orbitalSpeed: "Unknown",
+            description: "Kepler-22b orbits a star like our Sun and is a bit bigger than Earth. It's very far away!",
+            image: "C://Users//sagar//OneDrive//Desktop//nasa//exoplanet-exploration//imgs//51 Pegasi b.jpeg"
+        },
+        {
+            name: "Proxima Centauri b",
+            distance: "4.24 light-years",
+            radius: "1.3 Earth Radii",
+            orbitalSpeed: "Unknown",
+            description: "Proxima Centauri b is one of the closest exoplanets to Earth. It might have conditions where liquid water could exist!",
+            image: "https://via.placeholder.com/600x400.png?text=Proxima+Centauri+b"
+        },
+        {
+            name: "Kepler-22b",
+            distance: "600 light-years",
+            radius: "2.4 Earth Radii",
+            orbitalSpeed: "Unknown",
+            description: "Kepler-22b orbits a star like our Sun and is a bit bigger than Earth. It's very far away!",
+            image: "https://via.placeholder.com/600x400.png?text=Kepler-22b"
+        },
+        {
+            name: "HD 209458 b",
+            distance: "150 light-years",
+            radius: "1.4 Jupiter Radii",
+            orbitalSpeed: "Over 100,000 km/h",
+            description: "HD 209458 b, also known as 'Osiris', is a hot, large planet close to its star with extreme temperatures!",
+            image: "https://via.placeholder.com/600x400.png?text=HD+209458+b"
+        },
+        {
+            name: "TRAPPIST-1d",
+            distance: "39 light-years",
+            radius: "0.77 Earth Radii",
+            orbitalSpeed: "Unknown",
+            description: "TRAPPIST-1d is one of seven Earth-sized planets around a cool star. It might have oceans or lakes!",
+            image: "https://via.placeholder.com/600x400.png?text=TRAPPIST-1d"
+        },
+        {
+            name: "HD 189733 b",
+            distance: "63 light-years",
+            radius: "1.14 Jupiter Radii",
+            orbitalSpeed: "Very fast",
+            description: "HD 189733 b has fierce winds and rain made of glass. It's known for its beautiful blue color!",
+            image: "https://via.placeholder.com/600x400.png?text=HD+189733+b"
+        },
+        {
+            name: "51 Pegasi b",
+            distance: "50 light-years",
+            radius: "1.3 Jupiter Radii",
+            orbitalSpeed: "Very fast",
+            description: "51 Pegasi b was the first exoplanet discovered around a Sun-like star. It's a hot and large planet!",
+            image: "https://via.placeholder.com/600x400.png?text=51+Pegasi+b"
+        },
+        {
+            name: "GJ 1214 b",
+            distance: "40 light-years",
+            radius: "2.7 Earth Radii",
+            orbitalSpeed: "Unknown",
+            description: "GJ 1214 b might have a thick atmosphere with clouds or fog. It’s known as a ‘steamy’ planet!",
+            image: "https://via.placeholder.com/600x400.png?text=GJ+1214+b"
+        },
+        {
+            name: "Kepler-186f",
+            distance: "500 light-years",
+            radius: "1.1 Earth Radii",
+            orbitalSpeed: "Unknown",
+            description: "Kepler-186f is in the habitable zone of its star and could be similar to Earth. It’s sometimes called an ‘Earth cousin’!",
+            image: "https://via.placeholder.com/600x400.png?text=Kepler-186f"
+        },
+        {
+            name: "WASP-12b",
+            distance: "870 light-years",
+            radius: "1.8 Jupiter Radii",
+            orbitalSpeed: "Very fast",
+            description: "WASP-12b is extremely hot and has a molten surface. It's one of the hottest planets discovered!",
+            image: "https://via.placeholder.com/600x400.png?text=WASP-12b"
+        },
+        {
+            name: "PSR B1257+12 A",
+            distance: "980 light-years",
+            radius: "0.99 Earth Radii",
+            orbitalSpeed: "Unknown",
+            description: "PSR B1257+12 A is part of a triple system of planets. It's one of the oldest known exoplanets!",
+            image: "https://via.placeholder.com/600x400.png?text=PSR+B1257+12+A"
+        },
+        {
+            name: "HD 6434 b",
+            distance: "21 light-years",
+            radius: "1.5 Jupiter Radii",
+            orbitalSpeed: "Unknown",
+            description: "HD 6434 b is a giant planet close to its star. It’s known for its strong winds and storms!",
+            image: "https://via.placeholder.com/600x400.png?text=HD+6434+b"
+        },
+        {
+            name: "WASP-19b",
+            distance: "750 light-years",
+            radius: "1.25 Jupiter Radii",
+            orbitalSpeed: "Very fast",
+            description: "WASP-19b has a very short year, orbiting its star in less than 2 days. It's a very hot and small gas giant!",
+            image: "https://via.placeholder.com/600x400.png?text=WASP-19b"
+        },
+        {
+            name: "HD 69830 d",
+            distance: "41 light-years",
+            radius: "2.2 Earth Radii",
+            orbitalSpeed: "Unknown",
+            description: "HD 69830 d is part of a three-planet system and may have water vapor in its atmosphere.",
+            image: "https://via.placeholder.com/600x400.png?text=HD+69830+d"
+        },
+        {
+            name: "GJ 674 b",
+            distance: "14 light-years",
+            radius: "1.4 Jupiter Radii",
+            orbitalSpeed: "Unknown",
+            description: "GJ 674 b is a nearby planet with a possible thick atmosphere. It’s relatively close to us!",
+            image: "https://via.placeholder.com/600x400.png?text=GJ+674+b"
+        },
+        {
+            name: "WASP-10b",
+            distance: "84 light-years",
+            radius: "1.5 Jupiter Radii",
+            orbitalSpeed: "Very fast",
+            description: "WASP-10b is a hot planet with high temperatures and a fast orbit around its star.",
+            image: "https://via.placeholder.com/600x400.png?text=WASP-10b"
+        },
+        {
+            name: "HD 149026 b",
+            distance: "257 light-years",
+            radius: "1.2 Jupiter Radii",
+            orbitalSpeed: "Unknown",
+            description: "HD 149026 b is known for its unusual heavy elements. It’s a very interesting planet!",
+            image: "https://via.placeholder.com/600x400.png?text=HD+149026+b"
+        },
+        {
+            name: "HD 209458 c",
+            distance: "150 light-years",
+            radius: "1.2 Jupiter Radii",
+            orbitalSpeed: "Over 50,000 km/h",
+            description: "HD 209458 c is a hot planet very close to its star. It’s also known for its extreme temperatures!",
+            image: "https://via.placeholder.com/600x400.png?text=HD+209458+c"
+        },
+        {
+            name: "Kepler-11g",
+            distance: "2000 light-years",
+            radius: "1.5 Earth Radii",
+            orbitalSpeed: "Unknown",
+            description: "Kepler-11g is one of the planets in a multi-planet system. It’s small and orbits its star at a good distance.",
+            image: "https://via.placeholder.com/600x400.png?text=Kepler-11g"
+        },
+        {
+            name: "HD 217107 b",
+            distance: "100 light-years",
+            radius: "1.5 Jupiter Radii",
+            orbitalSpeed: "Unknown",
+            description: "HD 217107 b has a thick atmosphere and a high mass. It’s a giant planet that is quite far from Earth.",
+            image: "https://via.placeholder.com/600x400.png?text=HD+217107+b"
+        },
+        {
+            name: "GJ 1132 b",
+            distance: "39 light-years",
+            radius: "1.2 Earth Radii",
+            orbitalSpeed: "Unknown",
+            description: "GJ 1132 b is a rocky planet with a possible atmosphere. It’s close to Earth and has an interesting"}
+        
+
+        // Add the remaining exoplanets here...
+    ];
+
+    let currentExoplanetIndex = 0;
+
+    const API_KEY = 'AIzaSyAuCS5EOtTVVtXeRf_4oMuD0gU8_x59ALk'; // Replace with your API Key
+    const CSE_ID = 'pragyaan-1726328380400'; // Your Custom Search Engine ID
+
+    const fetchImageFromGoogle = async (query) => {
+        try {
+            const response = await fetch(`https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&cx=${CSE_ID}&key=${API_KEY}&searchType=image`);
+            const data = await response.json();
+            if (data.items && data.items.length > 0) {
+                return data.items[0].link; // Get the first image result
+            }
+            return 'https://via.placeholder.com/600x400.png?text=No+Image+Found'; // Placeholder image
+        } catch (error) {
+            console.error('Error fetching image:', error);
+            return 'https://via.placeholder.com/600x400.png?text=Error+Fetching+Image'; // Error placeholder
+        }
+    };
+
+    const fetchExoplanetData = async () => {
+        const exoplanet = exoplanets[currentExoplanetIndex];
+        distance.textContent = `Distance from Earth: ${exoplanet.distance}`;
+        radius.textContent = `Radius: ${exoplanet.radius}`;
+        orbitalSpeed.textContent = `Orbital Speed: ${exoplanet.orbitalSpeed}`;
+        description.textContent = `Description: ${exoplanet.description}`;
+
+        const imageUrl = await fetchImageFromGoogle(exoplanet.name);
+        image.src = imageUrl;
+
+        // Update index for next exoplanet
+        currentExoplanetIndex = (currentExoplanetIndex + 1) % exoplanets.length;
+    };
+
+    button.addEventListener('click', fetchExoplanetData);
+
+    // Fetch an exoplanet on page load
+    fetchExoplanetData();
+});

@@ -1,0 +1,1 @@
+create a webpage usimg html,jss,css that uses nasa api to display random exoplanets pictures and below the photos displays info such as distance from earth, radius, oribital speed,description,, make the website dynamic such that everytimr the user clicks on image or refreshes the page we get a new exo planet
